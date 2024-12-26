@@ -1,46 +1,14 @@
 const { getPrinters, print } = require("pdf-to-printer");
 const path = require('path');
 const fs = require('fs');
+const config = require('../config/config-service').getConfig();
 
-const printReceipt = async (printer, receiptId) => {
-    let dataResult = { is_error: false, message: '', printer };
-    let resPdfBuffer;
-    
-    
-    const filePath = path.join(__dirname, "receipt.pdf");
-
-    // Збереження PDF-файлу на диску, перед друком
-    //await fs.writeFile(filePath, resPdfBuffer);
-    fs.writeFileSync(filePath, resPdfBuffer);
-
-    const options = {
-        printer: printer.url,
-    };
-
-    try {
-        await print(filePath, options);
-        console.log("Друк успішно завершено");
-    } catch (error) {
-        //console.error("Помилка при друку:", error);
-        dataResult.is_error = true;
-        dataResult.message = error.message;
-    }
-
-    setTimeout(() => {
-        try {
-            fs.unlinkSync(filePath);
-        } catch(err) {}
-    }, 25000);
-
-    return dataResult;
-};
-
-const getPrintersList = async() => {
+const getPrintersList = async () => {
     // return await printLinuxService.getPrintersList();
     let dataResult = { is_error: false, message: '', printers: [] };
     try {
         const printersList = await getPrinters();
-        dataResult.printers = printersList;     
+        dataResult.printers = printersList;
     } catch (error) {
         dataResult.is_error = true;
         dataResult.message = error.message;
@@ -48,37 +16,54 @@ const getPrintersList = async() => {
     return dataResult;
 }
 
-const printPdfBuffer = async (pdfBuffer, printer, fileSuffix) => {
-    
-    let dataResult = { is_error: false, message: '', printer };
-    if (!printer?.url) {
-        dataResult.is_error = true;
-        dataResult.message = 'no printer data'
-        return false;
-    }
+const printPdfBuffer = async (pdfBuffer, printerName, fileSuffix) => {
+
+    const filePath = path.join(__dirname, `pf_${fileSuffix}.pdf`);
+    //console.log("збережено файл", filePath);
+    // Збереження PDF-файлу на диску, перед друком
+    fs.writeFileSync(filePath, pdfBuffer);
+    const dataResult = await printFilePDF(filePath, printerName);
+
+    return dataResult;
+}
+
+const printPdfBase64 = async (pdfBase64, printerName, fileSuffix) => {
+
+    const pdfBuffer = Buffer.from(pdfBase64, 'base64');
     const filePath = path.join(__dirname, `pf_${fileSuffix}.pdf`);
     //console.log("збережено файл", filePath);
     // Збереження PDF-файлу на диску, перед друком
     fs.writeFileSync(filePath, pdfBuffer);
 
-    const options = {
-        printer: printer.url,
-    };
+    const dataResult = await printFilePDF(filePath, printerName);
 
+    return dataResult;
+}
+
+const printFilePDF = async (filePath, printerName) => {
+
+    let dataResult = { is_error: false, message: '', printerName };
     try {
-        await print(filePath, options);
-        //console.log("Друк успішно завершено");
+        if (printerName) {
+            await print(filePath, { printer: printerName });
+        } else {
+
+        }
+        console.log("Друк успішно завершено");
+        setTimeout(() => {
+            try {
+                fs.unlinkSync(filePath);
+            } catch (err) { }
+        }, 25000);
     } catch (error) {
-        //console.error("Помилка при друку:", error);
+        console.error("Помилка при друку:", error);
         dataResult.is_error = true;
         dataResult.message = error.message;
     }
-    // try {
-    //     fs.unlinkSync(filePath);
-    // } catch(err) {}
     return dataResult;
 }
 
 exports.printReceipt = printReceipt;
 exports.getPrintersList = getPrintersList;
 exports.printPdfBuffer = printPdfBuffer;
+exports.printPdfBase64 = printPdfBase64;
