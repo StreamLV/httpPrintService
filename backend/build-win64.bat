@@ -1,0 +1,1 @@
+pkg app.js --targets win-x64 --output http_print_service.exe
