@@ -1,5 +1,6 @@
 const express = require('express');
 // const path = require('path');
+// const fs = require('fs');
 const config = require('./config/config-service').getConfig();
 
 const defaultRoutes = require('./routes/default-routes');
@@ -10,7 +11,6 @@ const app = express();
 
 app.use(express.json({ limit: '250mb' }));
 app.use(express.urlencoded({ limit: '250mb' }));
-// app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -30,4 +30,5 @@ app.use((req, res, next) => {
     res.status(404).json({ message: 'Could not find this route' });
 });
 
+console.log("listening port " + config.port );
 app.listen(config.port);
