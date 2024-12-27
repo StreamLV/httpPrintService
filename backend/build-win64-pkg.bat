@@ -1,0 +1,1 @@
+pkg app.js --targets node16-win-x64 --output http_print_service.exe

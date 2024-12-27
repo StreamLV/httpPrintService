@@ -1,1 +1,1 @@
-pkg app.js --targets win-x64 --output http_print_service.exe
+node compile app.js --output http_print_service.exe --target win-x64

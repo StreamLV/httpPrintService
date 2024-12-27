@@ -18,9 +18,9 @@ const getPrintersList = async () => {
 
 const printPdfBuffer = async (pdfBuffer, printerName, fileSuffix) => {
 
-    const filePath = path.join(__dirname, `pf_${fileSuffix}.pdf`);
+    // const filePath = path.join(__dirname, `pf_${fileSuffix}.pdf`);
+    const filePath = path.join(process.cwd(), `pf_${fileSuffix}.pdf`);
     //console.log("збережено файл", filePath);
-    // Збереження PDF-файлу на диску, перед друком
     fs.writeFileSync(filePath, pdfBuffer);
     const dataResult = await printFilePDF(filePath, printerName);
 
@@ -30,8 +30,9 @@ const printPdfBuffer = async (pdfBuffer, printerName, fileSuffix) => {
 const printPdfBase64 = async (pdfBase64, printerName, fileSuffix) => {
 
     const pdfBuffer = Buffer.from(pdfBase64, 'base64');
-    const filePath = path.join(__dirname, `pf_${fileSuffix}.pdf`);
-    //console.log("збережено файл", filePath);
+    // const filePath = path.join(__dirname, `pf_${fileSuffix}.pdf`);
+    const filePath = path.join(process.cwd(), `pf_${fileSuffix}.pdf`);
+    console.log("збережено файл", filePath);
     // Збереження PDF-файлу на диску, перед друком
     fs.writeFileSync(filePath, pdfBuffer);
 
@@ -49,7 +50,7 @@ const printFilePDF = async (filePath, printerName) => {
         } else {
 
         }
-        console.log("Друк успішно завершено");
+        console.log("printFilePDF", {res: 'success', filePath, printerName});
         setTimeout(() => {
             try {
                 fs.unlinkSync(filePath);
@@ -63,7 +64,6 @@ const printFilePDF = async (filePath, printerName) => {
     return dataResult;
 }
 
-exports.printReceipt = printReceipt;
 exports.getPrintersList = getPrintersList;
 exports.printPdfBuffer = printPdfBuffer;
 exports.printPdfBase64 = printPdfBase64;
