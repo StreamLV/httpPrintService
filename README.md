@@ -34,12 +34,26 @@ A lightweight HTTP server for printing on Windows printers.
 - **Endpoint**: `POST /api/print/pdf`
 - **Example URL**: `http://127.0.0.1:5733/api/print/pdf`
 
+### Printing PNG Files
+- **Endpoint**: `POST /api/print/png`
+- **Example URL**: `http://127.0.0.1:5733/api/print/png`
+
 #### Request Body (JSON):
 ```json
 {
   "token": "your-token",
   "printer": "printer-name",
   "pdfBase64": "base64-encoded-pdf-content"
+}
+```
+
+or (for png) 
+
+```json
+{
+  "token": "your-token",
+  "printer": "printer-name",
+  "pngBase64": "base64-encoded-png-content-or-png-url"
 }
 ```
 
@@ -90,12 +104,25 @@ A lightweight HTTP server for printing on Windows printers.
 - **Endpoint**: `POST /api/print/pdf`
 - **Приклад URL**: `http://127.0.0.1:5733/api/print/pdf`
 
-#### Тіло запиту (JSON):
+### Запит на друк PNG
+- **Endpoint**: `POST /api/print/png`
+- **Приклад URL**: `http://127.0.0.1:5733/api/print/png`
+
+#### Тіло запиту (JSON) для pdf:
 ```json
 {
   "token": "ваш-токен",
   "printer": "ім'я-принтера",
   "pdfBase64": "base64-закодований-вміст-pdf"
+}
+```
+
+#### Тіло запиту (JSON) для png:
+```json
+{
+  "token": "ваш-токен",
+  "printer": "ім'я-принтера",
+  "pngBase64": "base64-закодований-вміст-png-або-url-png"
 }
 ```
 
