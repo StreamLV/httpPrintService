@@ -111,3 +111,4 @@ backendScales/package-lock.json
 # backendScales/config/config.js
 backendScales/package-lock.json
 backend/uploads/images/*
+backend/printfiles/*.png

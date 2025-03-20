@@ -23,7 +23,7 @@ AllowNoIcons=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=D:\work\www\koshik\httpPrintService\windows\installer\build
+OutputDir=x:\bases\streamlv\koshik\print\httpPrintService\windows\installer\build
 OutputBaseFilename=http_print_service_installer
 Compression=lzma
 SolidCompression=yes
@@ -34,17 +34,17 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 
 [Files]
-Source: "D:\work\www\koshik\httpPrintService\windows\build\pdfprintsoftware\*"; DestDir: "{app}\pdfprintsoftware"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "D:\work\www\koshik\httpPrintService\windows\build\printfiles\*"; DestDir: "{app}\printfiles"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "D:\work\www\koshik\httpPrintService\windows\build\config.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\work\www\koshik\httpPrintService\windows\build\http_print_service.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\work\www\koshik\httpPrintService\windows\build\http_print_service-service.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\work\www\koshik\httpPrintService\windows\build\http_print_service-service.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\work\www\koshik\httpPrintService\windows\build\service-install.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\work\www\koshik\httpPrintService\windows\build\service-refresh.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\work\www\koshik\httpPrintService\windows\build\service-restart.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\work\www\koshik\httpPrintService\windows\build\service-start.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\work\www\koshik\httpPrintService\windows\build\service-stop.bat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\work\www\koshik\httpPrintService\windows\build\service-uninstall.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\pdfprintsoftware\*"; DestDir: "{app}\pdfprintsoftware"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\printfiles\*"; DestDir: "{app}\printfiles"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\config.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\http_print_service.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\http_print_service-service.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\http_print_service-service.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\service-install.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\service-refresh.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\service-restart.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\service-start.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\service-stop.bat"; DestDir: "{app}"; Flags: ignoreversion
+Source: "x:\bases\streamlv\koshik\print\httpPrintService\windows\build\service-uninstall.bat"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
