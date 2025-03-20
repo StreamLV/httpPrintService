@@ -38,7 +38,7 @@ A lightweight HTTP server for printing on Windows printers.
 - **Endpoint**: `POST /api/print/png`
 - **Example URL**: `http://127.0.0.1:5733/api/print/png`
 
-#### Request Body (JSON):
+#### Request Body (JSON) for pdf:
 ```json
 {
   "token": "your-token",
@@ -47,8 +47,7 @@ A lightweight HTTP server for printing on Windows printers.
 }
 ```
 
-or (for png) 
-
+#### Request Body (JSON) for png:
 ```json
 {
   "token": "your-token",
